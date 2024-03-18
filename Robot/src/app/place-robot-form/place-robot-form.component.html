@@ -1,0 +1,32 @@
+<form [formGroup]="placeForm" (ngSubmit)="placeRobot()" class="row">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="number" class="form-control" formControlName="x" />
+                <label for="x">X Position</label>
+                <div *ngIf="placeForm.get('x')?.invalid && placeForm.get('x')?.touched" class="text-danger">X Position is required and must be between 0 and {{ size - 1 }}.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="number" class="form-control" formControlName="y" />
+                <label for="y">Y Position</label>
+                <div *ngIf="placeForm.get('y')?.invalid && placeForm.get('y')?.touched" class="text-danger">Y Position is required and must be between 0 and {{ size - 1 }}.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <select class="form-control" formControlName="direction">
+                    <option *ngFor="let d of directions" [value]="d">{{ d }}</option>
+                </select>
+                <label for="direction">Direction</label>
+                <div *ngIf="placeForm.get('direction')?.invalid && placeForm.get('direction')?.touched" class="text-danger">Direction is required.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-primary w-100 h-100" [disabled]="!placeForm.valid">PLACE</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,7 @@
+<section>
+  <div class="x" [style.height]="100 / size + '%'" *ngFor="let x of sizeArray.reverse()">
+    <div class="y" [style.width]="100 / size + '%'" *ngFor="let y of sizeArray">
+      <app-robot *ngIf="robot?.x == x && robot?.y == y" [direction]="robot.direction"></app-robot>
+    </div>
+  </div>
+</section>
